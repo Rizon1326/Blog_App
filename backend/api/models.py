@@ -69,7 +69,6 @@ class Category(models.Model):
     def __str__(self):
         return self.title
     # class Meta:
-    #     ordering = ['-date']
     #     verbose_name_plural = "Categories"
 
     def save(self, *args, **kwargs):
@@ -109,8 +108,7 @@ class Post(models.Model):
 
      def save(self, *args, **kwargs):
          if self.slug == "" or self.slug is None:
-             self.slug = slugify(self.title)+"-"+ shortuuid.uuid()[:2]
-        
+             self.slug = slugify(self.title)+"-"+ ShortUUIDField().uuid()[:2]
          super(Post, self).save(*args, **kwargs)
 
 
