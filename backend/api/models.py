@@ -50,7 +50,7 @@ class Profile(models.Model):
             self.user.username = self.user.full_name
             
         super(Profile, self).save(*args, **kwargs)
-
+        
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
